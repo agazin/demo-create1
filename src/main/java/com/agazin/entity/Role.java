@@ -10,44 +10,21 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 @Entity
-public class User {
-
+public class Role {
 	@Id
 	@GeneratedValue
 	private Integer id;
 	private String name;
-	private String email;
-	private String password;
-	
 	@ManyToMany
 	@JoinTable
-	private List<Role> roles;
+	private List<User> users; 
 
-	@OneToMany(mappedBy="user")
-	List<Blog> blogs;
 	public Integer getId() {
 		return id;
 	}
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
 	}
 
 	public String getName() {
@@ -58,13 +35,13 @@ public class User {
 		this.name = name;
 	}
 
-	public List<Role> getRoles() {
-		return roles;
+	public List<User> getUsers() {
+		return users;
 	}
 
-	public void setRoles(List<Role> roles) {
-		this.roles = roles;
+	public void setUsers(List<User> users) {
+		this.users = users;
 	}
- 
-	
+
+
 }
