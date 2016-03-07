@@ -68,7 +68,7 @@ public class InitDBService {
 		item2.setBlog(blog);
 		item2.setTitle("second");
 		item2.setDescription("second Blog");
-		item2.setLink("http://google.com");
+		item2.setLink("http://yahoo.com");
 		item2.setPublishedDate(new Date());
 		itemRepository.save(item2);
 	}

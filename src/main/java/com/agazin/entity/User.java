@@ -3,6 +3,7 @@ package com.agazin.entity;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
@@ -18,13 +19,14 @@ public class User {
 	private String name;
 	private String email;
 	private String password;
-	
+
 	@ManyToMany
 	@JoinTable
 	private List<Role> roles;
 
-	@OneToMany(mappedBy="user")
-	List<Blog> blogs;
+	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+	private List<Blog> blogs;
+
 	public Integer getId() {
 		return id;
 	}
@@ -32,7 +34,6 @@ public class User {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
 
 	public String getEmail() {
 		return email;
@@ -65,6 +66,13 @@ public class User {
 	public void setRoles(List<Role> roles) {
 		this.roles = roles;
 	}
- 
-	
+
+	public List<Blog> getBlogs() {
+		return blogs;
+	}
+
+	public void setBlogs(List<Blog> blogs) {
+		this.blogs = blogs;
+	}
+
 }
